@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->string('email')->primary();
-            $table->string('password');
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('password')->nullable(false)->change();
+            $table->string('fname')->nullable(false)->change();
+            $table->string('fname')->nullable(false)->change();
         });
     }
 

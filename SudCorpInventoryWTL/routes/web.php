@@ -13,17 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/',"App\Http\Controllers\AuthenticationController@checkNoSession");
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::post('/',"App\Http\Controllers\AuthenticationController@loginAuth");
 
-Route::get('/register', function () {
-    return view('register');
-});
+Route::get('/login',"App\Http\Controllers\AuthenticationController@checkSession");
+
+Route::get('/logout',"App\Http\Controllers\AuthenticationController@logout");
+
+Route::get('/',"App\Http\Controllers\UsersController@create");
 
 Route::get('/inventory', function () {
     return view('inventory');
