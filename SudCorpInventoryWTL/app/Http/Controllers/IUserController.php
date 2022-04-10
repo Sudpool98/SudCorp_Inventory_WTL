@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\IUser;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class IUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,17 +35,23 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new User();
         
+        $iuser = new IUser();
+        $iuser->email = request("email");
+        $iuser->password = request("password");
+        $iuser->fname = request("fname");
+        $iuser->lname = request("lname");
+        $iuser->save();
+        return redirect("/login");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\IUser  $iUser
      * @return \Illuminate\Http\Response
      */
-    public function show(Users $users)
+    public function show(IUser $iUser)
     {
         //
     }
@@ -53,10 +59,10 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\IUser  $iUser
      * @return \Illuminate\Http\Response
      */
-    public function edit(Users $users)
+    public function edit(IUser $iUser)
     {
         //
     }
@@ -65,10 +71,10 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\IUser  $iUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users $users)
+    public function update(Request $request, IUser $iUser)
     {
         //
     }
@@ -76,10 +82,10 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\IUser  $iUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users $users)
+    public function destroy(IUser $iUser)
     {
         //
     }

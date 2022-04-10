@@ -14,7 +14,8 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        //
+        $items = Items::where("email",session('data')['email'])->get();
+        return view('inventory',["items"=>$items]);
     }
 
     /**

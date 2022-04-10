@@ -24,9 +24,10 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($items as $item)
                         <tr>
-                            <td>Abc</td>
-                            <td>$123</td>
+                            <td>{{$item->iname}}</td>
+                            <td>${{$item->price}}</td>
                             <td>
                                 <a href="#" class="btn btn-info btn-icon-split btn-sm">
                                     <span class="text">Edit</span>
@@ -36,6 +37,7 @@
                                 </a>
                             </td>
                         </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

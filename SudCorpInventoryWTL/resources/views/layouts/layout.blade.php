@@ -42,14 +42,14 @@
 
             <!-- Nav Item - Dashboard -->
             <li id="dashboard" class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Nav Item - Inventory -->
             <li id="inventory" class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/inventory">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Inventory</span></a>
             </li>

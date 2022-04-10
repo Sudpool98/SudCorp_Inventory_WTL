@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\IUser;
+use App\Models\Items;
 
 class AuthenticationController extends Controller
 {
@@ -13,7 +14,7 @@ class AuthenticationController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-        $data = users::where("email",$req->input('email'))->first();
+        $data = IUser::where("email",$req->input('email'))->first();
         if($data == NULL || $data->password != $req->input('password'))
             return back()->with('error', 'Invalid Email or Password');
         $req->session()->put('data',$data);
@@ -23,8 +24,17 @@ class AuthenticationController extends Controller
     {
         if(!session()->has('data'))
             return redirect('/login');
-
-        return view('index');
+        $count = Items::where("email",session('data')['email'])->count();
+        $sum = Items::where("email",session('data')['email'])->sum('price');
+        if($count==NULL)
+            $count=0;
+        if($sum==NULL)
+            $sum=0;
+        $data = [
+            "count" => $count,
+            "sum" => $sum
+        ];
+        return view('index',$data);
     }
     function checkSession()
     {

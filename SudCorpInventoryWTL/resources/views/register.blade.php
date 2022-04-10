@@ -35,39 +35,41 @@
                                 <h1 class="m-0 font-weight-bold text-primary">SudCorp<sup>TM</sup></h1>
                                 <h3 class="h4 text-gray-900 mb-4">Create an Account!</h3>
                             </div>
-                            <form class="user">
+                            <form class="user" action="/register" method="post">
+                                @csrf
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        <input type="text" class="form-control form-control-user" name="fname"
                                             placeholder="First Name">
+                                           
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        <input type="text" class="form-control form-control-user" name="lname"
                                             placeholder="Last Name">
+                                        
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    <input type="email" class="form-control form-control-user" name="email"
                                         placeholder="Email Address">
+                                      
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                            name="password" placeholder="Password">
+                                        
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                            name="repassword" placeholder="Repeat Password">
                                     </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                <button class="btn btn-primary btn-user btn-block">
                                     Register Account
-                                </a>
+                                </button>
                             </form>
                             <hr>
-                            <div class="text-center">
-                                <a class="small" href="#">Forgot Password?</a>
-                            </div>
                             <div class="text-center">
                                 <a class="small" href="/login">Already have an account? Login!</a>
                             </div>

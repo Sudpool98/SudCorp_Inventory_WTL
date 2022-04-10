@@ -19,10 +19,10 @@ Route::post('/',"App\Http\Controllers\AuthenticationController@loginAuth");
 
 Route::get('/login',"App\Http\Controllers\AuthenticationController@checkSession");
 
+Route::post('/register',"App\Http\Controllers\IUserController@store");
+
 Route::get('/logout',"App\Http\Controllers\AuthenticationController@logout");
 
-Route::get('/',"App\Http\Controllers\UsersController@create");
+Route::get('/register',"App\Http\Controllers\IUserController@create");
 
-Route::get('/inventory', function () {
-    return view('inventory');
-});
+Route::get('/inventory',"App\Http\Controllers\ItemsController@index");
