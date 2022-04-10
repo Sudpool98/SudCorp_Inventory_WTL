@@ -70,9 +70,9 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary btn-user btn-block">
+                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </button>
+                                        </a>
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
