@@ -35,6 +35,14 @@ class IUserController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'fname' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'repassword' => 'required|same:password'
+        ]);
         
         $iuser = new IUser();
         $iuser->email = request("email");

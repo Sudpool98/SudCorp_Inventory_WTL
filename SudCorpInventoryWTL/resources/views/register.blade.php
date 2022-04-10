@@ -41,28 +41,39 @@
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" name="fname"
                                             placeholder="First Name">
-                                           
+                                            @error("fname")
+                                                <p style="color:red">{{$errors->first("fname")}}</p>
+                                                @enderror
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" name="lname"
                                             placeholder="Last Name">
-                                        
+                                            @error("lname")
+                                                <p style="color:red">{{$errors->first("lname")}}</p>
+                                                @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" name="email"
                                         placeholder="Email Address">
-                                      
+                                        @error("email")
+                                                <p style="color:red">{{$errors->first("email")}}</p>
+                                                @enderror
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
                                             name="password" placeholder="Password">
-                                        
+                                            @error("password")
+                                                <p style="color:red">{{$errors->first("password")}}</p>
+                                                @enderror
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="password" class="form-control form-control-user"
                                             name="repassword" placeholder="Repeat Password">
+                                            @error("repassword")
+                                                <p style="color:red">{{$errors->first("repassword")}}</p>
+                                                @enderror
                                     </div>
                                 </div>
                                 <button class="btn btn-primary btn-user btn-block">
