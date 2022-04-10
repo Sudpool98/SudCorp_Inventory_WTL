@@ -9,7 +9,7 @@
     <!-- Tables -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="#" class="btn btn-primary btn-icon-split btn-sm">
+            <a href="/new" class="btn btn-primary btn-icon-split btn-sm">
                 <span class="text">Add Item</span>
             </a>
         </div>
@@ -29,12 +29,16 @@
                             <td>{{$item->iname}}</td>
                             <td>${{$item->price}}</td>
                             <td>
-                                <a href="#" class="btn btn-info btn-icon-split btn-sm">
+                                <form method="post" action="/delete/{{$item->id}}">
+                                @csrf
+                                @method("DELETE")
+                                <a href="/edit/{{$item->id}}" class="btn btn-info btn-icon-split btn-sm">
                                     <span class="text">Edit</span>
                                 </a>
-                                <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                <button onclick="return confirm('Delete Skin?')" class="btn btn-danger btn-circle btn-sm">
                                     <i class="fas fa-trash"></i>
-                                </a>
+                                </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

@@ -39,38 +39,28 @@
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="m-0 font-weight-bold text-primary">SudCorp<sup>TM</sup></h1>
-                                        <h3 class="h4 text-gray-900 mb-4">Login</h3>
+                                        <h3 class="h4 text-gray-900 mb-4">New Item</h3>
                                     </div>
-                                    <form class="user" action="/" method="post">
+                                    <form class="user" action="/new" method="post">
                                         @csrf
-                                        @if(session()->has('error'))
-                                            <p style="color:red">
-                                                {{ session()->get('error') }}
-                                            </p>
-                                        @endif
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                name="email" aria-describedby="emailHelp"
-                                                placeholder="Email">
-                                                @error("email")
-                                                <p style="color:red">{{$errors->first("email")}}</p>
+                                            <input type="text" class="form-control form-control-user"
+                                                name="iname" placeholder="Name">
+                                                @error("iname")
+                                                <p style="color:red">{{$errors->first("iname")}}</p>
                                                 @enderror
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                name="password" placeholder="Password">
-                                                @error("password")
-                                                <p style="color:red">{{$errors->first("password")}}</p>
+                                            <input type="text" class="form-control form-control-user"
+                                                name="price" placeholder="Price">
+                                                @error("price")
+                                                <p style="color:red">{{$errors->first("price")}}</p>
                                                 @enderror
                                         </div>
                                       
                                         <button class="btn btn-primary btn-user btn-block">
-                                            Login
+                                            Save
                                       </button>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="/register">Create an Account!</a>
-                                    </div>
                                 </div>
                             
                     </div>

@@ -14,6 +14,8 @@ class ItemsController extends Controller
      */
     public function index()
     {
+        if(!session()->has('data'))
+            return redirect('/login');
         $items = Items::where("email",session('data')['email'])->get();
         return view('inventory',["items"=>$items]);
     }
@@ -25,7 +27,9 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        //
+        if(!session()->has('data'))
+            return redirect('/login');
+        return view('itemviews.new');
     }
 
     /**
@@ -36,7 +40,17 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'iname' => 'required',
+            'price' => 'required'
+        ]);
+        
+        $item = new Items();
+        $item->email = session('data')['email'];
+        $item->iname = request("iname");
+        $item->price = (int)request("price");
+        $item->save();
+        return redirect("/inventory");
     }
 
     /**
@@ -54,11 +68,15 @@ class ItemsController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Items  $items
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Items $items)
+    public function edit($id)
     {
-        //
+        if(!session()->has('data'))
+            return redirect('/login');
+        $item = Items::find($id);
+        return view("itemviews.edit",["item"=>$item]);
     }
 
     /**
@@ -66,21 +84,34 @@ class ItemsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Items  $items
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Items $items)
+    public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'iname' => 'required',
+            'price' => 'required'
+        ]);
+
+        $item = Items::find($id);
+        $item->iname = request("iname");
+        $item->price = (int)request("price");
+        $item->save();
+        return redirect("/inventory");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Items  $items
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Items $items)
+    public function destroy($id)
     {
-        //
+        $item = Items::find($id);
+        $item->delete();
+        return redirect("/inventory");
     }
 }
